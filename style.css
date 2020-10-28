@@ -33,7 +33,17 @@ body {
 }
 
 .desktop-container {
+  display: flex;
+  height: 200px;
+  border: 1px solid green;
+}
+
+.hidden {
   display: none;
+}
+
+p {
+  color: white;
 }
 
 @media only screen and (min-width: 768px) {
@@ -51,5 +61,6 @@ body {
     border: 1px solid green;
     width: 33%;
     color: white;
+    height: 200px;
   }
 }
