@@ -13,5 +13,8 @@ body {
 }
 
 .btn {
+  width: 100%;
   font-family: "Mukta", sans-serif;
+  font-size: 50px;
+  background-color: #6c553d;
 }
