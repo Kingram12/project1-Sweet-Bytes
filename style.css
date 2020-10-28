@@ -1,0 +1,17 @@
+/*resets*/
+
+body {
+  background-color: black;
+  margin: 0;
+  font-family: "Mukta", sans-serif;
+}
+
+.header {
+  background-image: url("/assets/dark-chocolate-sweets-chocolate-concepts-chocolate-bar-candy-concepts.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  font-family: "Mukta", sans-serif;
+}
