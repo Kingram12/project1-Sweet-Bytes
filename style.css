@@ -17,4 +17,28 @@ body {
   font-family: "Mukta", sans-serif;
   font-size: 50px;
   background-color: #6c553d;
+  border-radius: 25px;
+  margin: 2px;
+}
+
+.desktop-container {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .desktop-container {
+    display: flex;
+    border: 1px solid green;
+    width: 33%;
+    color: white;
+  }
 }
