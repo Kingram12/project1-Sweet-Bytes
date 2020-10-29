@@ -99,12 +99,18 @@ let desserts = [
   },
 ];
 
+
+let cart = [ 
+];
+
 let drinkBtn = document.querySelector(".drink");
 let mainContainer = document.querySelector(".main");
 let drinkContainer = document.querySelector(".drink-cont");
 
 let iceCreamContainer = document.querySelector(".iceCream-cont");
 let layeredContainer = document.querySelector(".layered-cont");
+let totalItems = document.querySelector(".totalItems");
+let total = 0;
 
 mainContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("drink")) {
@@ -114,9 +120,26 @@ mainContainer.addEventListener("click", (e) => {
   } else {
     layeredContainer.classList.toggle("hidden");
   }
+  if(e.target.classList.contains("cardBtn")) {
+    let targetIndex = e.target.getAttribute("data-index");
+    let indexNumber = parseInt(targetIndex);
+    let newCartItem = {
+      name: desserts[indexNumber].name,
+      image: desserts[indexNumber].image,
+      category: desserts[indexNumber].category,
+      description: desserts[indexNumber].description,
+      price: desserts[indexNumber].price,
+    }
+    let newTotal = ++total;
+    totalItems.innerText = `Let's Eat!
+    Total Items:${newTotal}`;
+    console.log(total);
+    cart.push(newCartItem);
+    console.log(cart);
+}
 });
 
-desserts.forEach((dessert) => {
+desserts.forEach((dessert, index) => {
   let card = document.createElement("div");
   card.classList.add("card");
   let head = document.createElement("h2");
@@ -138,8 +161,8 @@ desserts.forEach((dessert) => {
   let addBtn = document.createElement("button");
   addBtn.innerText = "Add To Order";
   addBtn.classList.add("cardBtn");
+  addBtn.setAttribute("data-index", index)
   card.append(addBtn);
-
   if (dessert.category === "drink") {
     drinkContainer.append(card);
   } else if (dessert.category === "icecream") {
