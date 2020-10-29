@@ -30,7 +30,7 @@ let desserts = [
     category: "drink",
     description:
       "For those who need a little extra, plain black cup of coffee with a shot of espresso.",
-    price:  `$${2}.00`,
+    price: `$${2}.00`,
   },
   {
     name: "If...Else",
@@ -38,7 +38,7 @@ let desserts = [
     category: "drink",
     description:
       "If (you tell us you want cream) { We'll add cream } Else if (you tell us you want sugar) {We'll add sugar} Else (you want both) {We'll throw in both}",
-    price:  `$${3}.00`,
+    price: `$${3}.00`,
   },
   {
     name: "The Motherboard",
@@ -55,7 +55,7 @@ let desserts = [
     description: ` { name: Banana Split,
       category: "icecream",
       description: "A split banana topped with one scoop of chocolate icecream, one vanilla, and one strawberry. Accomponied by crushed nuts, fresh fruits and complimenting syrup.",`,
-    price:  `$${8}.00`,
+    price: `$${8}.00`,
   },
   {
     name: "Mobile First",
@@ -63,7 +63,7 @@ let desserts = [
     category: "icecream",
     description:
       "Let's keep it simple - our homemade icecream cone with one scoop of your chosen flavor.",
-    price:  `$${3}.00`,
+    price: `$${3}.00`,
   },
   {
     name: "5G",
@@ -71,7 +71,7 @@ let desserts = [
     category: "layered",
     description:
       "A slice of Gypsy tart with Graham cracker crust, topped with Granola and Gingerbread crumbles, finished off with a delicious scoop of vanilla Gelato.",
-    price:  `$${6}.00`,
+    price: `$${6}.00`,
   },
   {
     name: "CSS",
@@ -79,7 +79,7 @@ let desserts = [
     category: "layered",
     description:
       "Cheesecake (of course New York style) with fresh Strawberries and Strawberry sauce.",
-    price:  `$${6}.00`,
+    price: `$${6}.00`,
   },
   {
     name: "Full-Stack",
@@ -87,7 +87,7 @@ let desserts = [
     category: "layered",
     description:
       "You know what smores are? It's like that. A base of graham cracker, followed by a chocolate bar, and finished off with some lightly toasted marshmallows. Served warm.",
-    price:  `$${7}.00`,
+    price: `$${7}.00`,
   },
   {
     name: "Debug",
@@ -95,7 +95,7 @@ let desserts = [
     category: "layered",
     description:
       "It's not often we encourage having bugs, especially in food. The exception is our dirt pudding with gummy worms. A base of chocolate pudding, topped with brownie bits and a few bugs. ",
-    price:  `$${4}.00`,
+    price: `$${4}.00`,
   },
 ];
 
@@ -118,11 +118,12 @@ mainContainer.addEventListener("click", (e) => {
 
 desserts.forEach((dessert) => {
   let card = document.createElement("div");
+  card.classList.add("card");
   let head = document.createElement("h2");
   head.innerText = dessert.name;
   card.append(head);
   let imgCont = document.createElement("div");
-  imgCont.classList.add("centerContent")
+  imgCont.classList.add("centerContent");
   let img = document.createElement("img");
   img.setAttribute("src", dessert.image);
   img.classList.add("imgDisplay");
@@ -134,6 +135,10 @@ desserts.forEach((dessert) => {
   let price = document.createElement("p");
   price.innerText = dessert.price;
   card.append(price);
+  let addBtn = document.createElement("button");
+  addBtn.innerText = "Add To Order";
+  addBtn.classList.add("cardBtn");
+  card.append(addBtn);
 
   if (dessert.category === "drink") {
     drinkContainer.append(card);
