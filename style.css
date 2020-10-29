@@ -10,23 +10,20 @@ body {
 .header {
   position: relative;
 }
+
 .header-background-img {
   position: absolute;
   top: -700px;
   left: 0px;
   z-index: -1;
+  border-bottom: 2px solid white;
 }
-/* .header {
-  background-image: url("/assets/dark-chocolate-sweets-chocolate-concepts-chocolate-bar-candy-concepts.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-} */
 
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px;
 }
 
 .btn {
@@ -42,16 +39,28 @@ body {
 .desktop-container {
   display: flex;
   flex-direction: column;
-
   width: 100%;
+  margin: 5px;
 }
 
+.imgDisplay {
+  height: 20%;
+  width: 20%;
+  border: 2px solid white;
+}
+
+.centerContent {
+  display: flex;
+  justify-content: center;
+}
 .hidden {
   display: none;
 }
 
-p {
+p,
+h2 {
   color: white;
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -65,11 +74,25 @@ p {
     justify-content: space-between;
   }
 
+  .desktop-header {
+    position: relative;
+  }
+
+  .desktop-img {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    z-index: -1;
+  }
+
   .desktop-container {
     display: flex;
-    border: 1px solid green;
     width: 33%;
     color: white;
-    height: 200px;
   }
+}
+
+.imgDisplay {
+  height: 40%;
+  width: 40%;
 }
