@@ -111,6 +111,10 @@ let totalItems = document.querySelector(".totalItems");
 let total = 0;
 let cartLink = document.querySelector(".lets-eat");
 let subTotalPrice = 0;
+let submitButton = document.createElement("button")
+submitButton.innerText = "Confirm Order";
+let submitButton2 = document.createElement("button")
+submitButton2.innerText = "Confirm Order";
 
 mainContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("drink")) {
@@ -172,9 +176,10 @@ desserts.forEach((dessert, index) => {
   }
 });
 
+
 cartLink.addEventListener("click", () => {
   let cartContainer = document.createElement("div");
-  cartContainer.classList.add("cart-cont");
+  cartContainer.classList.add("cart-cont", "align");
   mainContainer.append(cartContainer);
   cart.forEach((item, index) => {
     let cartItem = document.createElement("p");
@@ -184,7 +189,6 @@ cartLink.addEventListener("click", () => {
     cartContainer.append(cartItem);
     subTotalPrice += item.price;
   });
-
   let tax = subTotalPrice * 0.06;
   let totalPrice = subTotalPrice + tax;
   let cartTotal = document.createElement("p");
@@ -192,4 +196,87 @@ cartLink.addEventListener("click", () => {
   Tax: $${tax}
   Total: $${totalPrice}`;
   cartContainer.append(cartTotal);
+
+  let paymentTypeCont = document.createElement("div")
+  paymentTypeCont.classList.add("paymentCont")
+  let cashLabel = document.createElement("label")
+  cashLabel.setAttribute("for", "cash")
+  cashLabel.innerText = "Cash Payment"
+  let cashRadioBtn = document.createElement("input")
+  cashRadioBtn.setAttribute("type", "radio")
+  cashRadioBtn.setAttribute("name", "paymentType")
+  cashRadioBtn.setAttribute("id", "cash")
+  cashRadioBtn.classList.add("cash");
+
+let cardLabel = document.createElement("label")
+  cardLabel.setAttribute("for", "card")
+  cardLabel.innerText = "Card Payment"
+  let cardRadioBtn = document.createElement("input")
+  cardRadioBtn.setAttribute("type", "radio")
+  cardRadioBtn.setAttribute("name","paymentType")
+  cardRadioBtn.setAttribute("id", "card")
+  cardRadioBtn.classList.add("card");
+  paymentTypeCont.append(cashLabel,cashRadioBtn, cardLabel, cardRadioBtn);
+  cartContainer.append(paymentTypeCont);
+
+  let cashForm = document.createElement("form")
+  cashForm.classList.add("hidden", "align");
+  let cashTenderedLabel= document.createElement("label")
+  cashTenderedLabel.setAttribute("for", "cashTendered")
+  let cashTendered = document.createElement("input")
+  cashTendered.setAttribute("type", "number")
+  cashTendered.setAttribute("name", "cashTendered")
+  cashTendered.setAttribute("id", "cashTendered")
+
+  cashForm.append(cashTenderedLabel, cashTendered, submitButton)
+  cartContainer.append(cashForm);
+
+  let creditForm = document.createElement("form")
+  creditForm.classList.add("hidden", "align");
+
+  let cardNameLabel = document.createElement("label")
+  cardNameLabel.setAttribute("for", "cardName")
+  let cardName = document.createElement("input")
+  cardName.setAttribute("type", "text")
+  cardName.setAttribute("name", "cardName")
+  cardName.setAttribute("id", "cardName")
+  cardName.setAttribute("placeholder", "Cardholder's Name")
+
+  let cardPaymentLabel = document.createElement("label")
+  cardPaymentLabel.setAttribute("for", "cardPayment")
+  let cardPayment = document.createElement("input")
+  cardPayment.setAttribute("type", "number")
+  cardPayment.setAttribute("name", "cardPayment")
+  cardPayment.setAttribute("id", "cardPayment")
+  cardPayment.setAttribute("minlength", 16)
+  cardPayment.setAttribute("maxlength", 16)
+
+  let cardExpLabel = document.createElement("label")
+  cardExpLabel.setAttribute("for", "cardExp")
+  let cardExp = document.createElement("input")
+  cardExp.setAttribute("type", "number")
+  cardExp.setAttribute("name", "cardExp")
+  cardExp.setAttribute("id", "cardExp")
+
+  let cardCVVLabel = document.createElement("label")
+  cardCVVLabel.setAttribute("for", "cardCVV")
+  let cardCVV = document.createElement("input")
+  cardCVV.setAttribute("type", "number")
+  cardCVV.setAttribute("name", "cardCVV")
+  cardCVV.setAttribute("id", "cardCVV")
+  creditForm.append(cardNameLabel, cardName, cardPaymentLabel, cardPayment, cardExpLabel, cardExp, cardCVVLabel, cardCVV, submitButton2)
+  cartContainer.append(creditForm);
+
+  cartContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("cash")) {
+      cashForm.classList.remove("hidden")
+      creditForm.classList.add("hidden")
+      cashForm.append(submitButton)
+    } else if (e.target.classList.contains("card")) {
+      creditForm.classList.remove("hidden")
+      cashForm.classList.add("hidden")
+      cashForm.append(submitButton)
+    }
+  })
 });
+
