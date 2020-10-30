@@ -44,6 +44,12 @@ a:visited {
   margin: 10px;
 }
 
+.align {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .btn {
   width: 90%;
   font-family: "Mukta", sans-serif;
@@ -106,10 +112,14 @@ h2 {
   height: 40px;
 }
 
+.paymentCont {
+  display: flex;
+}
+
 .cart-cont {
   height: 600px;
   width: 600px;
-  background-color: green;
+  background-color: #aaa5a4;
   display: flex;
   position: absolute;
   justify-content: center;
