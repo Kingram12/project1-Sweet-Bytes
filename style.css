@@ -37,6 +37,7 @@ a:visited {
 }
 
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +104,17 @@ h2 {
 .forkSpoon {
   width: 40px;
   height: 40px;
+}
+
+.cart-cont {
+  height: 600px;
+  width: 600px;
+  background-color: green;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 3;
 }
 
 @media only screen and (min-width: 768px) {
