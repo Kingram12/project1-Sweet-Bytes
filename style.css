@@ -160,6 +160,14 @@ h2 {
     text-align: center;
   }
 
+  .cart-cont {
+    position: fixed;
+    left: 35%;
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+  }
+
   .imgDisplay {
     height: 40%;
     width: 40%;

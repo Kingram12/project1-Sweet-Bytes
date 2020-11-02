@@ -225,16 +225,18 @@ cartLink.addEventListener("click", () => {
   cashTenderedLabel.innerText = "Amount Tendered:";
   let cashTendered = document.createElement("input");
   cashTendered.setAttribute("type", "number");
+  cashTendered.setAttribute("step", 0.01);
   cashTendered.setAttribute("name", "cashTendered");
   cashTendered.setAttribute("id", "cashTendered");
   cashTendered.classList.add("cashRec");
 
-  cartContainer.addEventListener("submit", (e) => {
+  cashForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let snapShot = new FormData(cashForm);
     let cashAmount = snapShot.get("cashTendered");
     if (cashAmount < totalPrice) {
       alert("That's not Enough!");
+      cashTendered.reset();
     } else {
       let change = cashAmount - totalPrice;
       let changeDue = document.createElement("p");
@@ -246,6 +248,15 @@ cartLink.addEventListener("click", () => {
     let rcpt = document.createElement("h3");
     rcpt.innerText = "Thank You for your purchase!";
     cartContainer.prepend(rcpt);
+    let closeRcpt = document.createElement("button");
+    closeRcpt.classList.add("closeRcpt");
+    closeRcpt.innerText = "X";
+    cartContainer.append(closeRcpt);
+    closeRcpt.addEventListener("click", (e) => {
+      if (e.target.classList.contains("closeRcpt")) {
+        cartContainer.remove();
+      }
+    });
   });
 
   cashForm.append(cashTenderedLabel, cashTendered, submitButton);
