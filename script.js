@@ -11,7 +11,7 @@ let desserts = [
   },
   {
     name: "Bluetooth",
-    image: "assets/bluetooth.jpg",
+    image: "assets/Bluetooth.jpg",
     category: "drink",
     description:
       "A blueberry slushy topped with fresh blueberries and a sugared rim.",
@@ -26,7 +26,7 @@ let desserts = [
   },
   {
     name: "JavaScript",
-    image: "assets/Java.jpg",
+    image: "assets/Espresso.jpg",
     category: "drink",
     description:
       "For those who need a little extra, plain black cup of coffee with a shot of espresso.",
@@ -34,7 +34,7 @@ let desserts = [
   },
   {
     name: "If...Else",
-    image: "assets/Java.jpg",
+    image: "assets/CrSugCoffee.jpg",
     category: "drink",
     description:
       "If (you tell us you want cream) { We'll add cream } Else if (you tell us you want sugar) {We'll add sugar} Else (you want both) {We'll throw in both}",
@@ -52,9 +52,9 @@ let desserts = [
     name: "The Array",
     image: "assets/Array.jpg",
     category: "icecream",
-    description: ` { name: Banana Split,
+    description: ` \[ name: Banana Split,
       category: "icecream",
-      description: "A split banana topped with one scoop of chocolate icecream, one vanilla, and one strawberry. Accomponied by crushed nuts, fresh fruits and complimenting syrup.",`,
+      description: "A split banana topped with one scoop of chocolate icecream, one vanilla, and one strawberry. Accomponied by crushed nuts, fresh fruits and complimenting syrup." \]`,
     price: 8.0,
   },
   {
@@ -145,12 +145,12 @@ mainContainer.addEventListener("click", (e) => {
 
 desserts.forEach((dessert, index) => {
   let card = document.createElement("div");
-  card.classList.add("card");
+  card.classList.add("card", "cardCont");
   let head = document.createElement("h2");
   head.innerText = dessert.name;
   card.append(head);
   let imgCont = document.createElement("div");
-  imgCont.classList.add("centerContent");
+  imgCont.classList.add("centerContent", );
   let img = document.createElement("img");
   img.setAttribute("src", dessert.image);
   img.classList.add("imgDisplay");
@@ -246,7 +246,7 @@ cartLink.addEventListener("click", () => {
     cashForm.classList.add("hidden");
     paymentTypeCont.remove();
     let rcpt = document.createElement("h3");
-    rcpt.innerText = "Thank You for your purchase!";
+    rcpt.innerText = "Thank you for your purchase!";
     cartContainer.prepend(rcpt);
     let closeRcpt = document.createElement("button");
     closeRcpt.classList.add("closeRcpt");
@@ -292,10 +292,30 @@ cartLink.addEventListener("click", () => {
   let cardExpLabel = document.createElement("label");
   cardExpLabel.setAttribute("for", "cardExp");
   cardExpLabel.innerText = "Exp. Date:";
-  let cardExp = document.createElement("input");
-  cardExp.setAttribute("type", "number");
+
+
+  let cardExp = document.createElement("select");
   cardExp.setAttribute("name", "cardExp");
   cardExp.setAttribute("id", "cardExp");
+
+  
+  for(let i=1; i<=12; i++){
+    let optionExp = document.createElement("option");
+    optionExp.setAttribute("value", i)
+    optionExp.innerText = i;
+    cardExp.append(optionExp)
+}
+
+let cardYear = document.createElement("select");
+cardYear.setAttribute("name", "cardYear");
+cardYear.setAttribute("id", "cardYear");
+
+for(let i=2021; i<=2031; i++){
+  let optionYear = document.createElement("option");
+  optionYear.setAttribute("value", i)
+  optionYear.innerText = i;
+  cardYear.append(optionYear)
+}
 
   let cardCVVLabel = document.createElement("label");
   cardCVVLabel.setAttribute("for", "cardCVV");
@@ -311,6 +331,7 @@ cartLink.addEventListener("click", () => {
     cardPayment,
     cardExpLabel,
     cardExp,
+    cardYear,
     cardCVVLabel,
     cardCVV,
     submitButton2
