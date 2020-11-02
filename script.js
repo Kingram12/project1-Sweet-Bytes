@@ -100,12 +100,6 @@ let desserts = [
 ];
 
 let cart = [];
-const cartEmpty = (array) => {
-  array.forEach((item, index) => {
-    let itemNum = item[index];
-    array.slice(itemNum, 1);
-  });
-};
 
 let drinkBtn = document.querySelector(".drink");
 let mainContainer = document.querySelector(".main");
@@ -261,7 +255,10 @@ cartLink.addEventListener("click", () => {
     closeRcpt.addEventListener("click", (e) => {
       if (e.target.classList.contains("closeRcpt")) {
         cartContainer.remove();
-        cartEmpty(cart);
+        cart = [];
+        total = 0;
+        subTotalPrice = 0;
+        totalItems.innerText = "";
       }
       console.log(cart);
     });
@@ -286,7 +283,7 @@ cartLink.addEventListener("click", () => {
   cardPaymentLabel.setAttribute("for", "cardPayment");
   cardPaymentLabel.innerText = "Card Number:";
   let cardPayment = document.createElement("input");
-  cardPayment.setAttribute("type", "number");
+  cardPayment.setAttribute("type", "text");
   cardPayment.setAttribute("name", "cardPayment");
   cardPayment.setAttribute("id", "cardPayment");
   cardPayment.setAttribute("minlength", 16);
