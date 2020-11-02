@@ -7,7 +7,7 @@ let desserts = [
     category: "drink",
     description:
       "Pick your flavor: Chocolate, Strawberry, or Vanilla. Topped with a cherry, whipped topping and your choice of sprinkles.",
-    price: 6,
+    price: 6.0,
   },
   {
     name: "Bluetooth",
@@ -15,14 +15,14 @@ let desserts = [
     category: "drink",
     description:
       "A blueberry slushy topped with fresh blueberries and a sugared rim.",
-    price: 5,
+    price: 5.0,
   },
   {
     name: "Java",
     image: "assets/Java.jpg",
     category: "drink",
     description: "Plain black cup of coffee to pair with your dessert.",
-    price: 1,
+    price: 1.0,
   },
   {
     name: "JavaScript",
@@ -30,7 +30,7 @@ let desserts = [
     category: "drink",
     description:
       "For those who need a little extra, plain black cup of coffee with a shot of espresso.",
-    price: 2,
+    price: 2.0,
   },
   {
     name: "If...Else",
@@ -38,7 +38,7 @@ let desserts = [
     category: "drink",
     description:
       "If (you tell us you want cream) { We'll add cream } Else if (you tell us you want sugar) {We'll add sugar} Else (you want both) {We'll throw in both}",
-    price: 3,
+    price: 3.0,
   },
   {
     name: "The Motherboard",
@@ -46,7 +46,7 @@ let desserts = [
     category: "icecream",
     description:
       "Two scoops of icecream (flavor of your choice) topped with up to 10 toppings: Nutty: Peanuts, almonds, walnuts, cashews, pecans. Fruity: Strawberries, blueberries, raspberries, banana, pineapple, cherries, coconut. Gettin' Saucy: Hot fudge, caramel, chocolate, strawberry, butterscotch. Top it off: Whipped topping, brownie bits, Oreos, peanut butter cups, sprinkles, M & Ms, gummy bears, chocolate chips, marshmallows, graham cracker, vanilla wafers.",
-    price: 10,
+    price: 10.0,
   },
   {
     name: "The Array",
@@ -55,7 +55,7 @@ let desserts = [
     description: ` { name: Banana Split,
       category: "icecream",
       description: "A split banana topped with one scoop of chocolate icecream, one vanilla, and one strawberry. Accomponied by crushed nuts, fresh fruits and complimenting syrup.",`,
-    price: 8,
+    price: 8.0,
   },
   {
     name: "Mobile First",
@@ -63,7 +63,7 @@ let desserts = [
     category: "icecream",
     description:
       "Let's keep it simple - our homemade icecream cone with one scoop of your chosen flavor.",
-    price: 3,
+    price: 3.0,
   },
   {
     name: "5G",
@@ -71,7 +71,7 @@ let desserts = [
     category: "layered",
     description:
       "A slice of Gypsy tart with Graham cracker crust, topped with Granola and Gingerbread crumbles, finished off with a delicious scoop of vanilla Gelato.",
-    price: 6,
+    price: 6.0,
   },
   {
     name: "CSS",
@@ -79,7 +79,7 @@ let desserts = [
     category: "layered",
     description:
       "Cheesecake (of course New York style) with fresh Strawberries and Strawberry sauce.",
-    price: 6,
+    price: 6.0,
   },
   {
     name: "Full-Stack",
@@ -87,7 +87,7 @@ let desserts = [
     category: "layered",
     description:
       "You know what smores are? It's like that. A base of graham cracker, followed by a chocolate bar, and finished off with some lightly toasted marshmallows. Served warm.",
-    price: 7,
+    price: 7.0,
   },
   {
     name: "Debug",
@@ -95,11 +95,17 @@ let desserts = [
     category: "layered",
     description:
       "It's not often we encourage having bugs, especially in food. The exception is our dirt pudding with gummy worms. A base of chocolate pudding, topped with brownie bits and a few bugs. ",
-    price: 4,
+    price: 4.0,
   },
 ];
 
 let cart = [];
+const cartEmpty = (array) => {
+  array.forEach((item, index) => {
+    let itemNum = item[index];
+    array.slice(itemNum, 1);
+  });
+};
 
 let drinkBtn = document.querySelector(".drink");
 let mainContainer = document.querySelector(".main");
@@ -160,7 +166,7 @@ desserts.forEach((dessert, index) => {
   description.innerText = dessert.description;
   card.append(description);
   let price = document.createElement("p");
-  price.innerText = dessert.price;
+  price.innerText = ` $${dessert.price.toFixed(2)}`;
   card.append(price);
   let addBtn = document.createElement("button");
   addBtn.innerText = "Add To Order";
@@ -183,7 +189,7 @@ cartLink.addEventListener("click", () => {
   cart.forEach((item, index) => {
     let cartItem = document.createElement("p");
     let name = item.name;
-    let price = item.price;
+    let price = ` $${item.price.toFixed(2)}`;
     cartItem.append(name, price);
     cartContainer.append(cartItem);
     subTotalPrice += item.price;
@@ -191,7 +197,7 @@ cartLink.addEventListener("click", () => {
   let tax = subTotalPrice * 0.06;
   let totalPrice = subTotalPrice + tax;
   let cartTotal = document.createElement("p");
-  cartTotal.innerText = `Subtotal: $${subTotalPrice}
+  cartTotal.innerText = `Subtotal: $${subTotalPrice.toFixed(2)}
   Tax: $${tax.toFixed(2)}
   Total: $${totalPrice.toFixed(2)}`;
   cartContainer.append(cartTotal);
@@ -255,7 +261,9 @@ cartLink.addEventListener("click", () => {
     closeRcpt.addEventListener("click", (e) => {
       if (e.target.classList.contains("closeRcpt")) {
         cartContainer.remove();
+        cartEmpty(cart);
       }
+      console.log(cart);
     });
   });
 
