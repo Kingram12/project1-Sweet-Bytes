@@ -16,6 +16,8 @@ body {
   justify-content: flex-end;
   list-style: none;
   align-items: center;
+  margin: -15px;
+  margin-right: 10px;
 }
 
 .li-style {
@@ -33,7 +35,7 @@ a:visited {
   top: -700px;
   left: 0px;
   z-index: -1;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #43322b;
 }
 
 .main {
@@ -55,8 +57,7 @@ a:visited {
   font-family: "Mukta", sans-serif;
   color: white;
   font-size: 50px;
-  background-color: #6c553d;
-  border-radius: 25px;
+  background-color: #43322b;
   margin: 2px;
 }
 
@@ -85,15 +86,20 @@ a:visited {
 }
 
 .cardBtn {
-  background-color: #80391e;
+  background-color: #43322b;
   color: white;
-  padding: 10px;
+  padding: 5px;
   width: 30%;
-  border-radius: 25px;
 }
 
 .hidden {
   display: none;
+}
+
+h1 {
+  color: #43322b;
+  text-align: center;
+  text-shadow: 1.5px 1.5px black;
 }
 
 p,
@@ -119,12 +125,19 @@ h2 {
 .cart-cont {
   height: 600px;
   width: 600px;
-  background-color: #aaa5a4;
+  color: white;
+  background-color: #43322b;
+  box-shadow: 0px 0px 5px 20px #31241c;
   display: flex;
   position: absolute;
   justify-content: center;
   flex-direction: column;
   z-index: 3;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -150,14 +163,20 @@ h2 {
     z-index: -1;
   }
 
+  h1 {
+    color: #43322b;
+    text-align: center;
+  }
+
   .desktop-container {
     display: flex;
     height: 2500px;
     width: 33%;
     color: white;
-    background-color: #6c553d;
-    border: 1px solid chocolate;
+    background-color: #705b4f;
+    border: 3px solid #43322b;
     text-align: center;
+    padding: 5px;
   }
 
   .cart-cont {
