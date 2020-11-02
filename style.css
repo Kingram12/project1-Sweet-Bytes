@@ -170,13 +170,18 @@ footer {
 
   .desktop-container {
     display: flex;
-    height: 2500px;
+    height: 2800px;
     width: 33%;
     color: white;
     background-color: #705b4f;
     border: 3px solid #43322b;
     text-align: center;
     padding: 5px;
+  }
+
+  .centerContent {
+    width: 50%;
+    height: 50%;
   }
 
   .cart-cont {
@@ -188,7 +193,7 @@ footer {
   }
 
   .imgDisplay {
-    height: 40%;
-    width: 40%;
+    height: 100%;
+    width: 100%;
   }
 }
